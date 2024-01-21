@@ -1,104 +1,163 @@
-# Structures and Classes
-**구조체와 클래스**
+## Structures and Classes (구조체와 클래스)
 
-Custom Types for Data Encapsulation
-**데이터 캡슐화를 위한 사용자 정의 타입**
 
-Structures and classes are fundamental constructs in Swift that serve as the foundation for building your program's code.
-**구조체와 클래스는 Swift에서 프로그램 코드를 구축하는 기반으로, 기본적인 구성 요소입니다.**
+### Model custom types that encapsulate data
+데이터를 캡슐화하는 사용자 정의 타입 모델링
 
-You can define properties and methods to add functionality to these structures and classes, using the same syntax as when defining constants, variables, and functions.
-**이 구조체와 클래스에 속성과 메서드를 정의하여 기능을 추가할 수 있으며, 상수, 변수, 함수를 정의할 때와 동일한 문법을 사용합니다.**
+Structures and classes are general-purpose, flexible constructs  
+구조체와 클래스는 범용적이고 유연한 구조입니다.
 
-Unlike some other programming languages, Swift does not require you to create separate interface and implementation files for custom structures and classes.
-**스위프트는 다른 일부 프로그래밍 언어와 달리, 사용자 정의 구조체와 클래스에 대해 별도의 인터페이스 파일과 구현 파일을 만들 필요가 없습니다.**
+that become the building blocks of your program’s code.  
+그것들은 프로그램 코드의 구성 요소가 됩니다.
 
-**Note:** Traditionally, an instance of a class is referred to as an "object."
+You define properties and methods  
+속성과 메서드를 정의합니다
 
-**참고:** 전통적으로 클래스의 인스턴스는 "객체"로 언급됩니다.
+to add functionality to your structures and classes  
+이것들은 구조체와 클래스에 기능을 추가하기 위함입니다.
 
-However, in Swift, structures and classes are functionally closer to each other than in other languages.
+using the same syntax you use to define constants, variables, and functions.  
+상수, 변수, 함수를 정의할 때 사용하는 문법을 그대로 사용합니다.
 
-그러나 Swift에서는 구조체와 클래스가 다른 언어보다 기능적으로 서로 가까운 특성을 공유합니다.
+Unlike other programming languages,  
+다른 프로그래밍 언어들과 달리,
 
-Much of this chapter applies to instances of both classes and structures.
+Swift doesn’t require you to create separate interface and implementation files  
+스위프트는 인터페이스와 구현을 위한 따로 떨어진 파일을 만들 필요가 없다.
 
-이 장의 대부분은 클래스와 구조체의 인스턴스에 모두 적용됩니다.
+for custom structures and classes.
+여러분이 만든 구조체나 클래스를 위해서
 
-Therefore, the term "instance" is used more broadly.
+In Swift, you define a structure or class in a single file,  
+스위프트에서는 구조체나 클래스를 하나의 파일 안에서 정의합니다.
 
-따라서 "인스턴스"라는 용어가 더 널리 사용됩니다.
+and the external interface to that class or structure is automatically made available for other code to use.  
+그리고 그 구조체나 클래스의 외부 인터페이스는 다른 코드가 사용할 수 있도록 자동으로 제공됩니다.
 
-## Comparing Structures and Classes
+<div style="display:block;background-color:#9ef0fb;padding:0.5rem;color:#000">
+간단히 말해서, 스위프트에서는 여러분이 만든 구조체나 클래스를 하나의 파일로 만들면, 그것을 다른 코드에서 바로 사용할 수 있도록 스위프트가 알아서 처리해준다는 뜻이다. 다른 언어에서는 보통 두 개의 파일(인터페이스 파일과 구현 파일)을 만들어야 하지만 스위프트에서는 그럴 필요가 없다.
+</div><br>
 
-## 구조체와 클래스 비교
+> **Note**
+>
+> <b>An instance of a class is traditionally known as an *object*.</b>  
+클래스의 인스턴스는 전통적으로 객체라고 알려져 있습니다.  
+<b>However, Swift structures and classes are much closer in functionality than in other languages,</b>  
+하지만, 스위프트에서는 구조체와 클래스의 기능이 다른 언어들보다 훨씬 비슷합니다.
+<b>and much of this chapter describes functionality that applies to instances of *either* a class or a structure type.</b>  
+이 챕터에서 설명하는 많은 기능은 클래스나 구조체 타입의 인스턴스에 모두 적용됩니다.  
+<b>Because of this, the more general term *instance* is used.</b>  
+그래서 더 일반적인 용어인 '인스턴스'를 사용합니다.
 
-Structures and classes in Swift share several common features. 
+<div style="display:block;background-color:#9ef0fb;padding:0.5rem;color:#000">
+보통 '클래스의 인스턴스'를 '객체'라고 부르지만, 스위프트에서는 구조체와 클래스가 기능적으로 매우 비슷하기 때문에, 이들을 모두 '인스턴스'라고 부른다.
+</div><br>
 
-Swift에서 구조체와 클래스는 여러 공통 기능을 공유합니다.
+<br>
 
-Both can:
+**Comparing Structures and Classes**  
+구조체와 클래스 비교하기
 
-둘 다 다음을 수행할 수 있습니다:
 
-- Define properties to store values
+Structures and classes in Swift have many things in common. Both can:  
+스위프트의 구조체와 클래스는 많은 공통점을 갖고 있다. 둘 다 다음과 같은 일을 할 수 있다:
 
-  - 값을 저장하기 위한 속성 정의
+- Define properties to store values  
+값 저장을 위해 속성을 정의할 수 있다.
+- Define methods to provide functionality  
+기능 제공을 위해 메서드를 정의할 수 있다.
 
-- Define methods to provide functionality
+- Define subscripts to provide access to their values using subscript syntax  
+첨자 구문을 사용해서 그들의 값에 접근하기 위한 첨자를 정의할 수 있다.
 
-  - 기능을 제공하기 위한 메서드 정의
+- Define initializers to set up their initial state  
+초기 상태를 설정하기 위해 초기화 함수를 정의할 수 있다.
 
-- Define subscripts to provide access to their values using subscript syntax
+- Be extended to expand their functionality beyond a default implementation  
+기본 구현을 넘어서 기능을 확장할 수 있다.
 
-  - 서브스크립트 문법을 사용하여 값을 제공하는 서브스크립트 정의
+- Conform to protocols to provide standard functionality of a certain kind  
+특정 종류의 표준 기능을 제공하기 위해 프로토콜을 따를 수 있다.
 
-- Define initializers to set up their initial state
+<div style="display:block;background-color:#9ef0fb;padding:0.5rem;color:#000">
+스위프트의 구조체와 클래스는 값을 저장하고, 기능을 제공하고, 값에 접근하고, 초기 상태를 만들고, 기능을 확장하며, 표준 기능을 제공하는 등 비슷한 방식으로 동작한다고 이해하면 된다.
+</div><br>
 
-  - 초기 상태를 설정하기 위한 이니셜라이저 정의
+For more information, see Properties, Methods, Subscripts, Initialization, Extensions, and Protocols.  
+더 많은 정보를 원하시면, 속성(프로퍼티), 메소드, 서브스크립트, 초기화, 확장, 그리고 프로토콜에 관련된 내용을 참조하세요.
 
-- Be extended to expand their functionality beyond a default implementation
+Classes have additional capabilities that structures don’t have:  
+클래스는 구조체에 없는 몇 가지 추가적인 기능을 가지고 있다:
 
-  - 확장을 통해 기본 구현을 넘어서기 위한 확장 정의
+- Inheritance enables one class to inherit the characteristics of another.  
+상속: 한 클래스가 다른 클래스의 특성을 물려받을 수 있다.
 
-- Conform to protocols to provide standard functionality of a certain kind
+- Type casting enables you to check and interpret the type of a class instance at runtime.
+타입 캐스팅: 실행 중에 클래스 인스턴스의 타입을 확인하고 해석할 수 있다.
 
-  - 특정 종류의 표준 기능을 제공하기 위해 프로토콜을 준수
+- Deinitializers enable an instance of a class to free up any resources it has assigned.  
+소멸자: 클래스 인스턴스가 할당한 자원을 해제할 수 있게 해준다.
 
-Classes have additional capabilities that structures do not have:
+- Reference counting allows more than one reference to a class instance.  
+참조 카운팅: 하나의 클래스 인스턴스에 여러 참조가 가능하다.
 
-클래스에는 구조체에는 없는 추가 기능이 있습니다:
+<div style="display:block;background-color:#9ef0fb;padding:0.5rem;color:#000">
+클래스에만 있는 이런 특별한 기능들 때문에, 클래스는 구조체보다 복잡한 상황에서 더 많이 사용된다.
+</div><br>
 
-- Inheritance enables one class to inherit the characteristics of another.
+For more information, see Inheritance, Type Casting, Deinitialization, and Automatic Reference Counting.  
+더 많은 정보를 알고 싶으면 상속, 타입 캐스팅, 자동 참조 카운팅을 참고하세요.
 
-  - 상속을 통해 하나의 클래스가 다른 클래스의 특성을 상속할 수 있습니다.
+The additional capabilities that classes support come at the cost of increased complexity.  
+클래스가 지원하는 추가적인 기능들은 복잡성이 증가한다는 것을 의미한다.
 
-- Type casting allows you to check and interpret the type of a class instance at runtime.
+As a general guideline, prefer structures because they’re easier to reason about, and use classes when they’re appropriate or necessary.
+일반적인 지침으로는, 구조체는 이해하기 쉽기 때문에 구조체를 선호하고, 클래스는 적절하거나 필요할 때 사용하세요.
 
-  - 타입 캐스팅을 사용하여 실행 시간에 클래스 인스턴스의 타입을 확인하고 해석할 수 있습니다.
+In practice, this means most of the custom types you define will be structures and enumerations.  
+실제로 이것은 여러분이 정의하는 맞춤형 타입들은 대부분 구조체와 열거형이 될 것이라는 의미입니다.
 
-- Deinitializers enable an instance of a class to free up any resources it has allocated.
+For a more detailed comparison, see Choosing Between Structures and Classes.  
+더 자세한 비교를 위해 구조체와 클래스 사이에서 선택하기를 참고하세요.
 
-  - 디이니셜라이저를 사용하여 클래스의 인스턴스가 할당한 리소스를 해제할 수 있습니다.
+> **Note**  
+Classes and actors share many of the same characteristics and behaviors.  
+클래스와 액터는 많은 같은 특성과 행동을 공유합니다.  
+For information about actors, see Concurrency.  
+액터에 대한 정보는 동시성을 참조하세요.
 
-- Reference counting allows multiple references to a class instance.
+<br>
 
-  - 참조 카운팅을 통해 클래스 인스턴스에 대한 다중 참조가 가능합니다.
+**Definition Syntax**  
+정의 문법
 
-These additional capabilities in classes come at the cost of increased complexity. 
-**클래스의 이러한 추가 기능은 복잡성이 증가하는 대가로 제공됩니다.**
+Structures and classes have a similar definition syntax.  
+구조체와 클래스는 유사한 정의 문법을 가지고 있습니다.
 
-As a general guideline, prefer structures because they are easier to understand. 
-**일반적인 지침으로 구조체를 선호하십시오. 구조체는 이해하기 쉬워서입니다.**
+You introduce structures with the `struct` keyword and classes with the `class` keyword.  
+구조체는 struct 키워드로, 클래스는 'class' 키워드로 시작합니다.
 
-Use classes when they are appropriate or necessary. 
-**적절하거나 필요할 때 클래스를 사용하십시오.**
+Both place their entire definition within a pair of braces:  
+둘 다 전체 정의를 중괄호 쌍 안에 넣습니다.
 
-In practice, most of the custom types you define will be structures and enumerations. 
-**실제로 정의하는 대부분의 사용자 정의 타입은 구조체와 열거형일 것입니다.**
+```swift
+struct SomeStructure {
+    // structure definition goes here
+}
 
-For a more detailed comparison, refer to the "Choosing Between Structures and Classes" section. 
-**더 자세한 비교에 대해서는 "구조체와 클래스 중 어떤 것을 선택할 것인가" 섹션을 참조하십시오.**
+class SomeClass {
+    // class definition goes here
+}
+```
+> Note  
+<b>Whenever you define a new structure or class, you define a new Swift type.</b>  
+새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 것입니다.  
+<b>Give types UpperCamelCase names (such as SomeStructure and SomeClass here) to match the capitalization of standard Swift types (such as String, Int, and Bool).</b>  
+타입 이름에는 대문자로 시작하는 카멜 표기법을 사용하세요.(예 SomeStructure, SomeClass), 이는 스위프트의 표준 타입 이름 (예: String, Int, Bool)과 일치시키기 위함입니다.  
+<b>Give properties and methods lowerCamelCase names (such as frameRate and incrementCount) to differentiate them from type names.</b>  
+속성과 메소드 이름에는 소문자로 시작하는 카멜 표기법을 사용하세요 (예: frameRate, incrementCount), 이는 타입 이름과 구별하기 위함입니다.
+
+Here’s an example of a structure definition and a class definition:
 
 ```swift
 struct Resolution {
@@ -114,65 +173,100 @@ class VideoMode {
 }
 ```
 
-In this example, we define a `Resolution` structure to represent a pixel-based display resolution, with properties for `width` and `height`.
+The example above defines a new structure called Resolution, to describe a pixel-based display resolution.  
+위의 예는 픽셀 기반 디스플레이 해상도를 설명하기 위한 'Resolution'이라는 새로운 구조체를 정의합니다.  
 
-**이 예제에서는 `Resolution` 구조체를 정의하여 픽셀 기반의 디스플레이 해상도를 나타내며, `width`와 `height` 속성을 가지고 있습니다.**
+This structure has two stored properties called width and height.  
+이 구조체에는 width와 height라는 두 개의 저장 속성이 있습니다.
 
-We also define a `VideoMode` class to describe a specific video mode, with properties for `resolution`, `interlaced`, `frameRate`, and an optional `name` string.
+Stored properties are constants or variables that are bundled up and stored as part of the structure or class.  
+저장 속성은 구조체나 클래스의 일부로 묶여 저장되는 상수 또는 변수입니다.
 
-**또한 특정 비디오 모드를 설명하는 데 사용할 `VideoMode` 클래스를 정의하며, `resolution`, `interlaced`, `frameRate`, 그리고 선택적인 `name` 문자열 속성을 가지고 있습니다.**
+These two properties are inferred to be of type Int by setting them to an initial integer value of 0.  
+이 두 속성은 초기 정수 값 0으로 설정함으로써 Int 타입으로 추론됩니다.
 
-## Structure and Class Instances
+The example above also defines a new class called VideoMode, to describe a specific video mode for video display.  
+위의 예에서는 비디오 디스플레이를 위한 특정 비디오 모드를 설명하기 위해 'VideoMode'라는 새로운 클래스를 정의합니다.
 
-The definitions of `Resolution` and `VideoMode` describe the structure of these types, but they do not represent specific instances of resolutions or video modes.  
-`Resolution`과 `VideoMode`의 정의는 이러한 유형의 구조를 설명하지만, 해상도나 비디오 모드의 구체적인 인스턴스를 나타내지는 않습니다.
+This class has four variable stored properties.  
+이 클래스는 네 개의 변수 저장 속성을 가지고 있습니다.
 
-To work with actual data, you need to create instances of the structure or class.  
-실제 데이터를 다루기 위해서는 구조체나 클래스의 인스턴스를 생성해야 합니다.
+The first, resolution, is initialized with a new Resolution structure instance, which infers a property type of Resolution.  
+첫 번째 속성인 'resolution'은 'Resolution' 구조체의 새 인스턴스로 초기화되며, 이로 인해 속성 타입이 'Resolution'으로 추론됩니다.
+
+For the other three properties, new VideoMode instances will be initialized with an interlaced setting of false (meaning “noninterlaced video”), a playback frame rate of 0.0, and an optional String value called name.  
+나머지 세 가지 속성의 경우, 새로운 'VideoMode' 인스턴스는 'interlaced' 설정을 'false'(비인터레시으 비디오를 의미)로, 재생 프레임율을 '0.0'으로, 그리고 'name'이라는 선택적인(String?) 문자열 값으로 초기화됩니다.
+
+The name property is automatically given a default value of nil, or “no name value”, because it’s of an optional type.  
+'name' 속성은 선택적 타입이기 때문에 자동으로 기본값으로 'nil' 또는 "이름 값 없음"을 갖게 됩니다.
+
+<br>
+
+**Structure and Class Instances**  
+구조체와 인스턴스
+
+The Resolution structure definition and the VideoMode class definition only describe what a Resolution or VideoMode will look like.  
+'Resolution' 구조체 정의와 'VideoMode' 클래스 정의는 'Resolution'이나 'VideoMode'가 어떤 모습일지에 대해서만 설명합니다.
+
+They themselves don’t describe a specific resolution or video mode.  
+그들 자체는 특정 해상도나 비디오 모드를 설명하지 않습니다.
+
+To do that, you need to create an instance of the structure or class.  
+그렇게 하려면, 구조체나 클래스의 인스턴스를 생성해야 합니다.
+
+The syntax for creating instances is very similar for both structures and classes:  
+구조체와 클래스의 인스턴스를 생성하는 문법은 매우 유사합니다:
 
 ```swift
 let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-Both structures and classes use initializer syntax for creating new instances.  
-구조체와 클래스 모두 새 인스턴스를 생성하기 위해 초기화 구문을 사용합니다.
+Structures and classes both use initializer syntax for new instances.  
+구조체와 클래스 모두 새 인스턴스에 대한 초기화 문법을 사용합니다.
 
-The simplest form of initializer syntax involves using the type name followed by empty parentheses, such as `Resolution()` or `VideoMode()`.  
-초기화 구문의 가장 간단한 형태는 타입 이름 뒤에 빈 괄호를 사용하는 것입니다, 예를 들어 `Resolution()` 또는 `VideoMode()`와 같이 사용합니다.
+The simplest form of initializer syntax uses the type name of the class or structure followed by empty parentheses, such as `Resolution()` or `VideoMode()`.  
+가장 간단한 초기화 문법 형태는 클래스나 구조체의 타입 이름 다음에 빈 괄호를 사용하는 것으로, 예를 들어 `Resolution()` 또는 `VideoMode()`와 같습니다.
 
-This creates a new instance of the structure or class, with properties initialized to their default values.  
-이것은 구조체나 클래스의 새로운 인스턴스를 생성하며, 속성들은 기본값으로 초기화됩니다.
+This creates a new instance of the class or structure, with any properties initialized to their default values.  
+이 방법으로 클래스나 구조체의 새로운 인스턴스를 생성하며, 모든 속성은 기본값으로 초기화 됩니다.
 
-Initialization is covered in more detail in the Initialization section.  
-초기화는 초기화 섹션에서 더 자세히 다루어집니다.
+Class and structure initialization is described in more detail in Initialization.  
+클래스와 구조체의 초기화는 '초기화(Initialization)'에서 더 자세히 설명됩니다.
 
-## Accessing Properties
+<br>
+
+**Accessing Properties**  
+속성 접근하기
 
 You can access the properties of an instance using dot syntax.  
-인스턴스의 속성에 접근하는 방법 중 하나는 점 구문(dot syntax)을 사용하는 것입니다.
+점 문법(dot syntax)을 사용하여 인스턴스의 속성에 접근할 수 있습니다.
 
-In dot syntax, you write the property name immediately after the instance name, separated by a period (.), without any spaces:  
-점 구문에서는 인스턴스 이름 바로 뒤에 속성 이름을 씁니다. 이때 속성 이름과 인스턴스 이름은 점(.)으로 구분되며, 사이에 공백이 없어야 합니다:
+In dot syntax, you write the property name immediately after the instance name, separated by a period (`.`), without any spaces:  
+점 문법에서는 인스턴스 이름 뒤에 곧바로 속성 이름을 쓰고, 점(.)으로 구분하며, 사이에 공백은 넣지 않습니다:
 
 ```swift
 print("The width of someResolution is \(someResolution.width)")
 // Prints "The width of someResolution is 0"
 ```
 
-In this example, `someResolution.width` refers to the `width` property of `someResolution`, returning its default initial value of 0.  
-이 예제에서, `someResolution.width`는 `someResolution`의 `width` 속성을 참조하며, 그 기본 초기값인 0을 반환합니다.
+In this example, someResolution.width refers to the width property of someResolution, and returns its default initial value of 0.  
+이 예시에서 `someResolution.width`는 `someResolution`의 `width` 속성을 참조하고, 기본 초기값인 0을 반환합니다.
 
-You can also access subproperties, such as the `width` property within the `resolution` property of a `VideoMode`:  
-또한, `VideoMode`의 `resolution` 속성 내의 `width` 속성과 같은 하위 속성에도 접근할 수 있습니다:
+You can drill down into subproperties, such as the width property in the resolution property of a VideoMode:  
+`VideoMode`의 `resolution` 속성 안에 있는 `width` 속성과 같은 하위 속성으로 들어가는 것도 가능합니다.
+
+<div style="display:block;background-color:#9ef0fb;padding:0.5rem;color:#000">
+`VideoMode`라는 비디오 설정을 저장하는 클래스가 있고, 그 안에 `resolution`이라는 화면 해상도를 나타내는 구조체가 있다. 이 `resolution` 구조체 안에는 `width`라는 너비를 나태는 값이 있다. 클래스의 속성에 접근할 때는 점(.)을 사용해서 `someVideoMode.resolution.width`라고 쓰면 된다. 이렇게 하면 `VideoMode`의 `resolution` 안에 있는 `width` 값을 볼 수 있다.
+</div><br>
 
 ```swift
 print("The width of someVideoMode is \(someVideoMode.resolution.width)")
 // Prints "The width of someVideoMode is 0"
 ```
 
-Dot syntax can also be used to assign a new value to a variable property:  
-점 구문은 변수 속성에 새로운 값을 할당하는 데에도 사용할 수 있습니다:
+You can also use dot syntax to assign a new value to a variable property:  
+당신은 또한 점 문법(dot syntax)을 사용해서, 변수 속성((variable property)에 새 값을 할당(assign)할 수 있습니다.
 
 ```swift
 someVideoMode.resolution.width = 1280
@@ -180,90 +274,153 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // Prints "The width of someVideoMode is now 1280"
 ```
 
-## Memberwise Initializers for Structure Types
+**Memberwise Initializers for Structure Types**  
+구조체 타입을 위한 멤버별 초기화
 
-All structures have an automatically generated memberwise initializer.  
-모든 구조체에는 자동으로 생성되는 멤버별 초기화 구문이 있습니다.
+All structures have an automatically generated memberwise initializer,
+모든 구조체들은 자동으로 생성되는 멤버별 초기화기를 가지고 있다.
 
-This initializer allows you to initialize the member properties of new structure instances.  
-이 초기화 구문을 통해 새 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다.
+which you can use to initialize the member properties of new structure instances.  
+새로운 구조체 인스턴스의 멤버 속성을 초기화하기 위해 사용할 수 있다.
 
-You can pass initial values for the properties to the memberwise initializer by name:  
-멤버별 초기화 구문에 이름을 지정하여 속성의 초기값을 전달할 수 있습니다:
+Initial values for the properties of the new instance can be passed to the memberwise initializer by name:  
+새 인스턴스의 속성을 위한 초기 값들은 이름에 의해 멤버별 초기화기에 전달될 수 있다.
 
 ```swift
 let vga = Resolution(width: 640, height: 480)
 ```
 
-Unlike structures, class instances do not receive a default memberwise initializer.  
-구조체와 달리, 클래스 인스턴스는 기본 멤버별 초기화 구문을 받지 않습니다.
+Unlike structures, class instances don’t receive a default memberwise initializer.  
+구조체와는 달리, 클래스 인스턴스는 기본 멤버별 초기화기를 받지 않습니다.
 
-Initialization is discussed in more detail in the Initialization section.  
-초기화는 초기화 섹션에서 더 자세히 다루어집니다.
+Initializers are described in more detail in Initialization.  
+초기화기에 대한 자세한 설명은 `Initialization` 에서 볼 수 있다.
 
-## Structures and Enumerations Are Value Types
+<br>
 
-In Swift, a value type is a type whose value is copied when assigned to a variable, constant, or passed to a function.  
-Swift에서 값 타입은 변수, 상수에 할당되거나 함수에 전달될 때 그 값이 복사되는 타입입니다.
+**Structures and Enumerations Are Value Types**  
+구조체와 열거형은 값 타입이다.
 
-Basic types in Swift, such as integers, floating-point numbers, Booleans, strings, arrays, and dictionaries, are all value types and are implemented as structures behind the scenes.  
-Swift의 기본 타입들, 예를 들어 정수, 부동 소수점 숫자, 불리언, 문자열, 배열, 사전은 모두 값 타입이며, 내부적으로는 구조체로 구현됩니다.
+A value type is a type whose value is copied when it’s assigned to a variable or constant, or when it’s passed to a function.  
+값 타입은 그 값이 복사되는 변수나 상수에 할당될 때, 또는 함수에 전달될 때이다.
 
-All structures and enumerations in Swift are value types.  
-Swift의 모든 구조체와 열거형은 값 타입입니다.
 
-This means that when you create instances of structures and enumerations, as well as any value types they contain as properties, copies are always made when they are passed around in your code.  
-이는 구조체와 열거형의 인스턴스를 생성할 때, 그들이 속성으로 포함하는 값 타입이 코드에서 전달될 때 항상 복사본이 생성된다는 것을 의미합니다.
+You’ve actually been using value types extensively throughout the previous chapters.  
+사실, 당신은 이전 챕터에서 이미 값 타입을 많이 사용했다.
 
-> **Note:** Collections like arrays, dictionaries, and strings in the Swift standard library use an optimization to reduce the performance cost of copying. Instead of making an immediate copy, these collections share memory where elements are stored between the original instance and any copies. If one of the copies is modified, the elements are copied just before the modification. The behavior you observe in your code is as if a copy took place immediately.  
-> **참고:** Swift 표준 라이브러리의 배열, 사전, 문자열과 같은 컬렉션들은 복사의 성능 비용을 줄이기 위해 최적화를 사용합니다. 즉시 복사하는 대신, 이러한 컬렉션들은 원본 인스턴스와 복사본 사이에 요소가 저장된 메모리를 공유합니다. 복사본 중 하나가 수정되면, 수정 전에 요소들이 복사됩니다. 코드에서 관찰하는 동작은 즉시 복사가 이루어진 것처럼 보입니다.
+In fact, all of the basic types in Swift  
+실제로, Swift의 모든 기본 타입들이
 
-Consider the following example using the `Resolution` structure from earlier:  
-앞서 소개된 `Resolution` 구조체를 사용하는 다음 예를 고려해 보세요:
+— integers, floating-point numbers, Booleans, strings, arrays, and dictionaries —  
+정수, 부동 소수점 숫자, 불린, 문자열, 배열, 그리고 사전
+
+are value types, and are implemented as structures behind the scenes.  
+값 타입이며, 내부적으로 구조체를 구현되어 있습니다.
+
+All structures and enumerations are value types in Swift.  
+Swift에서 모든 구조체와 열거형은 값 타입입니다.
+
+This means that any structure and enumeration instances you create  
+이것은 당신이 만든 어떤 구조체나 열거형 인스턴스도
+
+— and any value types they have as properties —  
+그리고 그것들이 가진 모든 값 타입 속성도
+
+are always copied when they’re passed around in your code.  
+코드에서 전달될 때는 항상 복사된다는 것을 의미합니다.
+
+> <b>Note</b>  
+<b>Collections defined by the Swift standard library</b>   
+Swift 표준 라이브러리에 의해 정의된 컬렉션들  
+<b>like arrays, dictionaries, and strings</b>   
+배열, 사전 문자열 같은  
+<b>use an optimization to reduce the performance cost of copying.</b>   
+복사의 성능 비용을 줄이기 위한 최적화를 사용합니다.  
+<b>Instead of making a copy immediately, these collections share the memory where the elements are stored</b>   
+바로 복사를 하는 대신, 이 컬렉션들은 원소가 저장되는 메모리를 공유한다.  
+<b>between the original instance and any copies.</b>   
+원본 인스턴스와 복사본들 사이에서  
+<b>If one of the copies of the collection is modified,</b>   
+만약 컬렉션의 복사본 중 하나가 수정되면,  
+<b>the elements are copied just before the modification.</b>   
+수정 바로 직전에 원소들이 복사된다.  
+<b>The behavior you see in your code is always as if a copy took place immediately.</b>   
+코드에서 보이는 행동은 항상 마치 즉시 복사가 일어난 것처럼 보인다.
+
+<br>
+
+Consider this example, which uses the Resolution structure from the previous example:  
+이 예제를 생각해 보아라, 이것은 이전 예제에서 Resolution 구조체를 사용한다.
 
 ```swift
 let hd = Resolution(width: 1920, height: 1080)
 var cinema = hd
 ```
 
-In this example, `hd` is assigned a `Resolution` instance with the dimensions of full HD video (1920 pixels wide by 1080 pixels high).  
-이 예제에서, `hd`는 전체 HD 비디오의 치수(가로 1920픽셀, 세로 1080픽셀)를 가진 `Resolution` 인스턴스에 할당됩니다.
+This example declares a constant called hd and sets it to a Resolution instance initialized with the width and height of full HD video (1920 pixels wide by 1080 pixels high).  
+이 예제는 hd라는 상수를 선언한다 그리고 그것을 Resolution 인스턴스로 설정한다. 풀 HD 비디오의 너비와 높이로 초기화된(너비 1920 픽셀, 높이 1080 픽셀).
 
-Then, a new variable `cinema` is assigned the current value of `hd`. Since `Resolution` is a structure, a copy of the existing instance is made, and this new copy is assigned to `cinema`.  
-그 다음, 새로운 변수 `cinema`에 `hd`의 현재 값이 할당됩니다. `Resolution`이 구조체이기 때문에, 기존 인스턴스의 복사본이 만들어지고, 이 새로운 복사본이 `cinema`에 할당됩니다.
+It then declares a variable called cinema and sets it to the current value of hd.  
+그런 다음 cinema라는 변수를 선언한다. 그리고 그것을 hd의 현재 값으로 설정한다.
 
-Even though `hd` and `cinema` now have the same width and height values, they are two completely different instances behind the scenes.  
-`hd`와 `cinema`가 같은 너비와 높이 값을 가지고 있지만, 실제로는 완전히 다른 두 인스턴스입니다.
+Because Resolution is a structure, a copy of the existing instance is made, and this new copy is assigned to cinema.  
+Resolution의 구조체이기 때문에, 기존 인스턴스의 복사본이 만들어진다, 그리고 이 새로운 복사본이 cinema에 할당된다.
 
-Next, the `width` property of `cinema` is updated to match the slightly wider 2K standard used for digital cinema projection (2048 pixels wide and 1080 pixels high):  
-이어서, `cinema`의 `width` 속성이 디지털 시네마 투사에 사용되는 약간 더 넓은 2K 표준(가로 2048픽셀, 세로 1080픽셀)과 일치하도록 업데이트됩니다:
+Even though hd and cinema now have the same width and height, they’re two completely different instances behind the scenes.  
+hd와 cinema가 이제 같은 너비와 높이를 가지고 있지만, 내부적으로는 완전히 다른 두 개의 인스턴스이다.
+
+Next, the width property of cinema is amended  
+다음으로, 영화관의 너비 속성이 변경된다.
+
+to be the width of the slightly wider 2K standard  
+조금 더 넓은 2K 표준의 너비가 되도록
+
+used for digital cinema projection  
+디지털 영화 상영에 사용된다.
+
+(2048 pixels wide and 1080 pixels high):  
+(가로는 2048픽셀이고 세로는 1080 픽셀이다.
 
 ```swift
 cinema.width = 2048
 ```
 
-Checking the `width` property of `cinema` now correctly reports the new width of 2048:  
-이제 `cinema`의 `width` 속성을 확인하면 새로운 너비인 2048을 정확하게 보고합니다:
+Checking the width property of cinema shows  
+영화관의 너비 속성을 확인해보면
+
+that it has indeed changed to be 2048:  
+그것은 실제로 2048로 변경되었다.
 
 ```swift
 print("cinema is now \(cinema.width) pixels wide")
 // Prints "cinema is now 2048 pixels wide"
 ```
 
-However, the `width` property of the original `hd` instance remains unchanged with the old value of 1920:  
-하지만
-
- 원래 `hd` 인스턴스의 `width` 속성은 이전 값인 1920으로 그대로 유지됩니다:
+However, the width property of the original hd instance still has the old value of 1920:  
+그러나 원래 hd 인스턴의 너비 속성은 여전히 이전의 값인 1920을 가지고 있다.
 
 ```swift
 print("hd is still \(hd.width) pixels wide")
 // Prints "hd is still 1920 pixels wide"
 ```
 
-When `cinema` was assigned the current value of `hd`, the values stored in `hd` were copied into the new `cinema` instance. As a result, you have two separate instances that contain the same numeric values. However, since they are distinct instances, changing the width of `cinema` to 2048 does not affect the width stored in `hd`.
+When cinema was given the current value of hd,  
+영화관에 현재 hd의 값을 줬을 때,
+
+the values stored in hd were copied into the new cinema instance.  
+hd에 저장된 값은 새 영화관 인스턴스로 복사되었다.
+
+The end result was two completely separate instances that contained the same numeric values.  
+결과적으로 숫자 값이 같지만 완전히 분리된 두 인스턴스가 만들어졌다.
+
+However, because they’re separate instances,  
+그러나, 두 인스턴스가 분리되어 있기 때문에,
+
+setting the width of cinema to 2048 doesn’t affect the width stored in hd.  
+영화관의 너비를 2048로 설정해도 hd에 저장된 너비에는 영향을 주지 않는다.
 
 The same behavior applies to enumerations:  
-동일한 동작이 열거형에도 적용됩니다:
+열거형에도 동일한 행동이 적용된다.
 
 ```swift
 enum CompassPoint {
@@ -279,80 +436,20 @@ currentDirection.turnNorth()
 
 print("The current direction is \(currentDirection)")
 print("The remembered direction is \(rememberedDirection)")
+// Prints "The current direction is north"
+// Prints "The remembered direction is west"
 ```
 
-When `rememberedDirection` is assigned the value of `currentDirection`, it is set to a copy of that value. Changing the value of `currentDirection` afterward does not affect the copy of the original value stored in `rememberedDirection`.  
-`rememberedDirection`에 `currentDirection`의 값이 할당될 때, 그 값의 복사본으로 설정됩니다. 이후 `currentDirection`의 값을 변경해도 `rememberedDirection`에 저장된 원래 값의 복사본에는 영향을 미치지 않습니다.
+When rememberedDirection is assigned the value of currentDirection,  
+`rememberedDirection`에 `currentDirection`의 값이 할당될 때,
 
-## Classes Are Reference Types
+it’s actually set to a copy of that value.  
+실제로 그 값의 복사본으로 설정된다.
 
-In contrast to value types, reference types are not copied when assigned to a variable, constant, or passed to a function.  
-값 타입과 달리, 참조 타입은 변수, 상수에 할당되거나 함수에 전달될 때 복사되지 않습니다.
+Changing the value of currentDirection thereafter  
+그 이후에 currentDirection의 값을 변경해도
 
-Instead, a reference to the same existing instance is used.  
-대신, 동일한 기존 인스턴스에 대한 참조가 사용됩니다.
+doesn’t affect the copy of the original value that was stored in rememberedDirection.  
+rememberedDirection에 저장된 원래 값의 복사본에는 영향을 주지 않는다.
 
-Here's an example using the `VideoMode` class defined earlier:  
-앞서 정의된 `VideoMode` 클래스를 사용하는 예를 들어보겠습니다:
-
-```swift
-let tenEighty = VideoMode()
-tenEighty.resolution = hd
-tenEighty.interlaced = true
-tenEighty.name = "1080i"
-tenEighty.frameRate = 25.0
-```
-
-In this example, a new constant named `tenEighty` is declared, and it is assigned to a new instance of the `VideoMode` class.  
-이 예제에서는 `tenEighty`라는 새로운 상수가 선언되고, `VideoMode` 클래스의 새 인스턴스에 할당됩니다.
-
-This video mode is configured with a copy of the HD resolution (1920 by 1080 pixels) from earlier, set to be interlaced, given a name of "1080i," and a frame rate of 25.0 frames per second.  
-이 비디오 모드는 이전의 HD 해상도(1920 x 1080 픽셀)의 복사본으로 구성되며, 인터레이스로 설정되고, "1080i"라는 이름과 초당 25.0 프레임의 프레임률로 설정됩니다.
-
-Next, `tenEighty` is assigned to a new constant called `alsoTenEighty`, and the frame rate of `alsoTenEighty` is modified:  
-다음으로, `tenEighty`는 `alsoTenEighty`라는 새로운 상수에 할당되고, `alsoTenEighty`의 프레임률이 수정됩니다:
-
-```swift
-let alsoTenEighty = tenEighty
-alsoTenEighty.frameRate = 30.0
-```
-
-Because classes are reference types, both `tenEighty` and `alsoTenEighty` actually refer to the same `VideoMode` instance.  
-클래스가 참조 타입이기 때문에, `tenEighty`와 `alsoTenEighty`는 실제로 동일한 `VideoMode` 인스턴스를 참조합니다.
-
-Essentially, they are two different names for the same single instance.  
-본질적으로, 그들은 같은 단일 인스턴스의 두 가지 다른 이름입니다.
-
-Checking the `frameRate` property of `tenEighty` correctly reports the new frame rate of 30.0 from the underlying `VideoMode` instance:  
-`tenEighty`의 `frameRate` 속성을 확인하면 기본 `VideoMode` 인스턴스에서 새로운 프레임률 30.0을 올바르게 보고합니다:
-
-```swift
-print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
-// Prints "The frameRate property of tenEighty is now 30.0"
-```
-
-This example also illustrates how reference types can be more challenging to manage.  
-이 예시는 또한 참조 타입이 관리하기 더 어려울 수 있다는 것을 보여줍니다.
-
-If `tenEighty` and `alsoTenEighty` were far apart in your code, it might be difficult to track all the places where the video mode is modified.  
-`tenEighty`와 `alsoTenEighty`가 코드에서 멀리 떨어져 있다면, 비디오 모드가 수정된 모든 장소를 추적하기 어려울 수 있습니다.
-
-When you use `tenEighty`, you also have to consider code that uses `alsoTenEighty`, and vice versa.  
-`tenEighty`를 사용할 때는 `alsoTenEighty`를 사용하는 코드도 고려해야 하며, 그 반대의 경우도 마찬가지입니다.
-
-In contrast, value types are easier to reason about because all the code that interacts with the same value is closely located in
-
- your source files.  
-반면, 값 타입은 동일한 값을 다루는 모든 코드가 소스 파일 내에서 가까이 위치하기 때문에 이해하기 쉽습니다.
-
-Note that both `tenEighty` and `alsoTenEighty` are declared as constants, not variables.  
-`tenEighty`와 `alsoTenEighty`는 변수가 아니라 상수로 선언되었다는 점을 주목하세요.
-
-However, you can still change `tenEighty.frameRate` and `alsoTenEighty.frameRate` because the values of the constants themselves do not change.  
-그러나 상수 자체의 값은 변경되지 않기 때문에 `tenEighty.frameRate`와 `alsoTenEighty.frameRate`를 변경할 수 있습니다.
-
-`tenEighty` and `alsoTenEighty` do not "store" the `VideoMode` instance; instead, they both refer to a `VideoMode` instance behind the scenes.  
-`tenEighty`와 `alsoTenEighty`는 `VideoMode` 인스턴스를 "저장"하지 않습니다; 대신, 그들은 모두 내부적으로 `VideoMode` 인스턴스를 참조합니다.
-
-It is the `frameRate` property of the underlying `VideoMode` instance that is modified, not the values of the constant references to that `VideoMode`.  
-수정되는 것은 `VideoMode`에 대한 상수 참조의 값이 아니라 기본 `VideoMode` 인스턴스의 `frameRate` 속성입니다.
+---
